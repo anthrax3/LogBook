@@ -1,16 +1,37 @@
-﻿using LogBook.Services.Models;
+﻿using LogBook.Entities;
+using LogBook.Entities.Entities;
+using LogBook.Services.Models;
+using System;
 
 namespace LogBook.Services.Internal
 {
-    internal interface IWriteService
+    internal class WriteService
     {
-    }
+        internal readonly LogBookEntityModel _context;
 
-    internal class WriteService : IWriteService
-    {
-        public void WriteLog(LogType logType, string exceptionType, string source, string message, string userName)
+        internal WriteService(LogBookEntityModel context)
         {
-            return;
+            _context = context;
+        }
+
+        internal void WriteLog(LogType logType, string source, Exception exception, string message, string userName)
+        {
+            var logEntry = new LogEntry
+            {
+                LogType = Convert.ToInt32(logType),
+                HostName = Environment.MachineName,
+                Source = source,
+                Message = message,
+                UserName = userName
+            };
+
+            if (exception != null)
+            {
+            }
+
+            _context.LogEntries.Add(logEntry);
+
+            _context.SaveChanges();
         }
     }
 }

@@ -1,47 +1,59 @@
-﻿using LogBook.Services.Internal;
+﻿using LogBook.Entities;
+using LogBook.Services.Internal;
 using LogBook.Services.Models;
+using System;
 
 namespace LogBook.Services
 {
-    public static class LogHandler
+    public class LogHandler
     {
-        #region Write Methods
+        #region Dependencies
 
-        public static void WriteLog(LogType logType, string message)
+        internal readonly WriteService _writeService;
+
+        public LogHandler(string connectionString)
         {
-            var writeService = new WriteService();
+            var logBookEntityModel = new LogBookEntityModel(connectionString);
 
-            writeService.WriteLog(logType, string.Empty, string.Empty, message, string.Empty);
+            _writeService = new WriteService(logBookEntityModel);
         }
 
-        public static void WriteLog(LogType logType, string exceptionType, string source, string message, string userName)
-        {
-            var writeService = new WriteService();
+        #endregion Dependencies
 
-            writeService.WriteLog(logType, exceptionType, source, message, userName);
+        /// <summary>
+        /// Write a basic log entry.
+        /// </summary>
+        /// <param name="logType">The severity of the Log Entry.</param>
+        /// <param name="message">A note which will help inform a log viewer about the nature of this message.</param>
+        /// <param name="userName">The name of a user which encountered an issue.</param>
+        public void WriteLog(LogType logType, string message, string userName)
+        {
+            WriteLog(logType, string.Empty, null, message, userName);
         }
 
-        public static void WriteLog(LogType logType, string source, string message, string userName)
+        /// <summary>
+        /// Write a basic log entry including a reference to the code which raised it.
+        /// </summary>
+        /// <param name="logType">The severity of the Log Entry.</param>
+        /// <param name="source">A reference to the source code which raised this issue.</param>
+        /// <param name="message">A note which will help inform a log viewer about the nature of this message.</param>
+        /// <param name="userName">The name of a user which encountered an issue.</param>
+        public void WriteLog(LogType logType, string source, string message, string userName)
         {
-            var writeService = new WriteService();
-
-            writeService.WriteLog(logType, string.Empty, source, message, userName);
+            WriteLog(logType, source, null, message, userName);
         }
 
-        #endregion Write Methods
-
-        #region Read Methods
-
-        public static void ReadLogs()
+        /// <summary>
+        /// Write a log entry including details about an exception that has occured.
+        /// </summary>
+        /// <param name="logType">The severity of the Log Entry.</param>
+        /// <param name="source">A reference to the source code which raised this issue.</param>
+        /// <param name="exception">The exception which contains information about what went wrong.</param>
+        /// <param name="message">A note which will help inform a log viewer about the nature of this message.</param>
+        /// <param name="userName">The name of a user which encountered an issue.</param>
+        public void WriteLog(LogType logType, string source, Exception exception, string message, string userName)
         {
-            var readService = new ReadService();
+            _writeService.WriteLog(logType, source, exception, message, userName);
         }
-
-        public static void ReadStatistics()
-        {
-            var readService = new ReadService();
-        }
-
-        #endregion Read Methods
     }
 }

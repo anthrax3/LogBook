@@ -7,7 +7,7 @@ namespace LogBook.Entities
     {
         #region Dependencies
 
-        public LogBookEntityModel() : base("name=LogBookEntityModel")
+        public LogBookEntityModel(string connectionString = "name=LogBookEntityModel") : base(connectionString)
         {
         }
 
