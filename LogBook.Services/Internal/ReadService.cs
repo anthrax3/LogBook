@@ -34,19 +34,5 @@ namespace LogBook.Services.Internal
 
             return logEntries;
         }
-
-        internal string GetStatistic(StatisticsType statisticType)
-        {
-            switch (statisticType)
-            {
-                case StatisticsType.ErrorCountToday:
-                    break;
-                default:
-                    return null;
-            }
-
-            return null;
-        }
-
     }
 }

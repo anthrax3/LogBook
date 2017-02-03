@@ -6,7 +6,7 @@ namespace LogBook.Demo
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
             // Step 1: Initialise The Log Handler and Pass a Database Connection String
             var logHandler = new LogHandler("name=LogBookEntityModel");
