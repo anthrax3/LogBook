@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LogBook.cs" />
+    <Compile Include="LogHandler.cs" />
     <Compile Include="Internal\ReadService.cs" />
     <Compile Include="Models\LogType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
