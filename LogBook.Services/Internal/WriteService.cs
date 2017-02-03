@@ -22,11 +22,19 @@ namespace LogBook.Services.Internal
                 HostName = Environment.MachineName,
                 Source = source,
                 Message = message,
-                UserName = userName
+                UserName = userName,
+                LogTime = DateTime.Now
             };
 
             if (exception != null)
             {
+                var logException = new LogException
+                {
+                    LogEntry = logEntry,
+                    ExceptionDetail = exception.ToString()
+                };
+
+                _context.LogExceptions.Add(logException);
             }
 
             _context.LogEntries.Add(logEntry);

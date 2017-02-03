@@ -11,8 +11,14 @@ namespace LogBook.Entities
         {
         }
 
+        public LogBookEntityModel() : base("name=LogBookEntityModel")
+        {
+        }
+
         #endregion Dependencies
 
         public virtual DbSet<LogEntry> LogEntries { get; set; }
+
+        public virtual DbSet<LogException> LogExceptions { get; set; }
     }
 }

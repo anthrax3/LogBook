@@ -52,10 +52,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\LogEntry.cs" />
+    <Compile Include="Entities\LogException.cs" />
     <Compile Include="LogBookEntityModel.cs" />
     <Compile Include="Migrations\201702031843379_AddLogEntryEntity.cs" />
     <Compile Include="Migrations\201702031843379_AddLogEntryEntity.Designer.cs">
       <DependentUpon>201702031843379_AddLogEntryEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702031934048_AddLogExceptionEntity.cs" />
+    <Compile Include="Migrations\201702031934048_AddLogExceptionEntity.Designer.cs">
+      <DependentUpon>201702031934048_AddLogExceptionEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,6 +72,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201702031843379_AddLogEntryEntity.resx">
       <DependentUpon>201702031843379_AddLogEntryEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702031934048_AddLogExceptionEntity.resx">
+      <DependentUpon>201702031934048_AddLogExceptionEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

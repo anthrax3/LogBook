@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LogBook.Entities.Entities
 {
@@ -18,5 +20,13 @@ namespace LogBook.Entities.Entities
         public string Message { get; set; }
 
         public string UserName { get; set; }
+
+        public DateTime LogTime { get; set; }
+
+        #region Virtual Properties
+
+        public virtual ICollection<LogException> LogExceptions { get; set; }
+
+        #endregion Virtual Properties
     }
 }
