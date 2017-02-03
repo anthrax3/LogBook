@@ -24,7 +24,17 @@ namespace LogBook.Demo
                 logHandler.WriteLog(LogType.Error, "LogBook.Demo.Program.cs", ex, ex.Message, string.Empty);
             }
 
-            Console.WriteLine("Press any key to terminate this application");
+            Console.WriteLine("Demo Log Entries have been logged. Press any key to retrieve the latest Log Entries.");
+            Console.ReadKey();
+
+            var logEntries = logHandler.ReadLatestLogEntries(100);
+
+            foreach(var entry in logEntries)
+            {
+                Console.WriteLine($"Log Entry: {entry.LogEntryId}. Message: {entry.Message}. Time: {entry.LogTime}. Host: {entry.HostName}.");
+            }
+
+            Console.WriteLine("Demo Log Entries have been retrieved. Press any key to terminate the Demo.");
             Console.ReadKey();
         }
     }

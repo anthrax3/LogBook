@@ -1,7 +1,9 @@
 ﻿using LogBook.Entities;
+using LogBook.Entities.Entities;
 using LogBook.Services.Internal;
 using LogBook.Services.Models;
 using System;
+using System.Collections.Generic;
 
 namespace LogBook.Services
 {
@@ -10,12 +12,14 @@ namespace LogBook.Services
         #region Dependencies
 
         internal readonly WriteService _writeService;
+        internal readonly ReadService _readService;
 
         public LogHandler(string connectionString)
         {
             var logBookEntityModel = new LogBookEntityModel(connectionString);
 
             _writeService = new WriteService(logBookEntityModel);
+            _readService = new ReadService(logBookEntityModel);
         }
 
         #endregion Dependencies
@@ -54,6 +58,31 @@ namespace LogBook.Services
         public void WriteLog(LogType logType, string source, Exception exception, string message, string userName)
         {
             _writeService.WriteLog(logType, source, exception, message, userName);
+        }
+
+        /// <summary>
+        /// Get a list of the most recent Log Entries
+        /// </summary>
+        /// <param name="maximumEntryCount">How many Log Entries do you want to return?</param>
+        /// <returns></returns>
+        public IEnumerable<LogEntry> ReadLatestLogEntries(int maximumEntryCount = 100)
+        {
+            var results = _readService.GetLatestLogEntries(maximumEntryCount);
+
+            return results;
+        }
+
+        /// <summary>
+        /// Get a list of the most recent Log Entries by Log Type (For Example: Errors)
+        /// </summary>
+        /// <param name="logType">What type of Log Entries do you want to return?</param>
+        /// <param name="maximumEntryCount">How many Log Entries do you want to return?</param>
+        /// <returns></returns>
+        public IEnumerable<LogEntry> ReadLatestLogEntries(LogType logType, int maximumEntryCount = 100)
+        {
+            var results = _readService.GetLatestLogEntries(logType, maximumEntryCount);
+
+            return results;
         }
     }
 }

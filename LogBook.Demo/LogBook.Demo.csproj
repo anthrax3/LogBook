@@ -60,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LogBook.Entities\LogBook.Entities.csproj">
+      <Project>{b49fb201-239d-48e4-9fc7-934c95e02ec6}</Project>
+      <Name>LogBook.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LogBook.Services\LogBook.Services.csproj">
       <Project>{7c2141d3-2924-439c-afb4-fef43f230a80}</Project>
       <Name>LogBook.Services</Name>
