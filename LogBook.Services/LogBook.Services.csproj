@@ -52,6 +52,7 @@
     <Compile Include="LogHandler.cs" />
     <Compile Include="Internal\ReadService.cs" />
     <Compile Include="Models\LogType.cs" />
+    <Compile Include="Models\StatisticsType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Internal\WriteService.cs" />
   </ItemGroup>

@@ -7,12 +7,16 @@ namespace LogBook.Services.Internal
 {
     internal class WriteService
     {
+        #region Dependencies
+
         internal readonly LogBookEntityModel _context;
 
         internal WriteService(LogBookEntityModel context)
         {
             _context = context;
         }
+
+        #endregion Dependencies
 
         internal void WriteLog(LogType logType, string source, Exception exception, string message, string userName)
         {
