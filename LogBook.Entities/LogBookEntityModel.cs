@@ -8,10 +8,6 @@ namespace LogBook.Entities
     {
         #region Dependencies
 
-        public LogBookEntityModel(string connectionString = "name=LogBookEntityModel") : base(connectionString)
-        {
-        }
-
         public LogBookEntityModel(DbConnection connection) : base(connection, true)
         {
         }

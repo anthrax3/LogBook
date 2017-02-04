@@ -17,11 +17,11 @@ namespace LogBook.Services
         internal readonly WriteService _writeService;
         internal readonly ReadService _readService;
 
-        public LogHandler(string connectionString)
+        public LogHandler()
         {
-            UpdateDatabase.Execute();
+            var logBookEntityModel = new LogBookEntityModel();
 
-            var logBookEntityModel = new LogBookEntityModel(connectionString);
+            UpdateDatabase.Execute();
 
             _writeService = new WriteService(logBookEntityModel);
             _readService = new ReadService(logBookEntityModel);

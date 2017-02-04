@@ -8,8 +8,8 @@ namespace LogBook.Demo
     {
         private static void Main()
         {
-            // Step 1: Initialise The Log Handler and Pass a Database Connection String
-            var logHandler = new LogHandler("name=LogBookEntityModel");
+            // Step 1: Initialise The Log Handler (Add Config Database Credential for LogBookEntityModel)
+            var logHandler = new LogHandler();
 
             // Step 2: Log Basic Information Messages
             logHandler.WriteLog(LogType.Information, "Welcome to LogBook", string.Empty);
