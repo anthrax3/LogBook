@@ -1,5 +1,6 @@
 language: csharp
 solution: LogBook.sln
+script: make build
 mono: none
 dotnet: 1.0.0-preview3-004056
 dist: trusty
