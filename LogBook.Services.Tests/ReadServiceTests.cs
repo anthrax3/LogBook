@@ -2,14 +2,14 @@
 using LogBook.Entities.Entities;
 using LogBook.Services.Internal;
 using LogBook.Services.Models;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace LogBook.Services.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class ReadServiceTests
     {
         #region Dependencies
@@ -19,7 +19,7 @@ namespace LogBook.Services.Tests
         internal WriteService _writeService;
         internal ReadService _readService;
 
-        [TestInitialize]
+        [SetUp]
         public void Initialise()
         {
             var connection = Effort.DbConnectionFactory.CreateTransient();
@@ -34,7 +34,7 @@ namespace LogBook.Services.Tests
 
         #endregion Dependencies
 
-        [TestMethod]
+        [Test]
         public void GetLatestLogEntries_ReturnsLogEntries()
         {
             // ARRANGE
@@ -48,7 +48,7 @@ namespace LogBook.Services.Tests
             Assert.IsTrue(_mockContext.LogEntries.Count() == 2);
         }
 
-        [TestMethod]
+        [Test]
         public void GetLatestLogEntries_ReturnsSpecifiedNumberOfEntries()
         {
             // ARRANGE
@@ -63,7 +63,7 @@ namespace LogBook.Services.Tests
             Assert.AreEqual(logEntries.First().Message, "Test Log Entry 2");
         }
 
-        [TestMethod]
+        [Test]
         public void GetLatestLogEntries_ReturnsSpecifiedLogTypeOnly()
         {
             // ARRANGE
@@ -79,7 +79,7 @@ namespace LogBook.Services.Tests
             Assert.IsTrue(logEntries.All(le => le.LogType == LOG_TYPE_ERROR));
         }
 
-        [TestMethod]
+        [Test]
         public void GetLatestLogEntriesPage_ReturnsCorrectFirstPage()
         {
             // ARRANGE
@@ -96,7 +96,7 @@ namespace LogBook.Services.Tests
             Assert.IsTrue(logEntries.First().Message == "Test Log Entry 5");
         }
 
-        [TestMethod]
+        [Test]
         public void GetLatestLogEntriesPage_ReturnsCorrectThirdPage()
         {
             // ARRANGE
@@ -113,7 +113,7 @@ namespace LogBook.Services.Tests
             Assert.IsTrue(logEntries.First().Message == "Test Log Entry 3");
         }
 
-        [TestMethod]
+        [Test]
         public void ErrorsSinceTime_FiltersDate()
         {
             // ARRANGE
@@ -134,7 +134,7 @@ namespace LogBook.Services.Tests
             Assert.AreEqual(3, actualErrorCount);
         }
 
-        [TestMethod]
+        [Test]
         public void ErrorsSinceTime_FiltersLogType()
         {
             // ARRANGE

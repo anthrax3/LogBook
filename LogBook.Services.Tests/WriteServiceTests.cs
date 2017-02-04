@@ -1,12 +1,12 @@
 ﻿using LogBook.Entities;
 using LogBook.Services.Internal;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Linq;
 
 namespace LogBook.Services.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class WriteServiceTests
     {
         #region Dependencies
@@ -15,7 +15,7 @@ namespace LogBook.Services.Tests
 
         internal WriteService _writeService;
 
-        [TestInitialize]
+        [SetUp]
         public void Initialise()
         {
             var connection = Effort.DbConnectionFactory.CreateTransient();
@@ -29,7 +29,7 @@ namespace LogBook.Services.Tests
 
         #endregion Dependencies
 
-        [TestMethod]
+        [Test]
         public void WriteLog_Succeeds()
         {
             _writeService.WriteLog(Models.LogType.Information, nameof(WriteLog_Succeeds), null, "WriteLog Produces a Log Entry", string.Empty);
@@ -37,7 +37,7 @@ namespace LogBook.Services.Tests
             Assert.IsTrue(_mockContext.LogEntries.Count() == 1);
         }
 
-        [TestMethod]
+        [Test]
         public void WriteLog_ExceptionLogged()
         {
             try
