@@ -1,6 +1,6 @@
 language: csharp
-solution: "./LogBook.sln"
+solution: "LogBook.sln"
 script:
-  - xbuild /p:Configuration=Debug solution-name.sln
+  - xbuild /p:Configuration=Debug LogBook.sln
 before_install:
   - sudo apt-get install nunit-console
