@@ -74,7 +74,7 @@ namespace LogBook.Services.Tests
             _writeService.WriteLog(LogType.Error, nameof(GetLatestLogEntries_ReturnsLogEntries), null, "Test Log Entry 2", string.Empty);
 
             // ACT
-            var logEntries = _readService.GetLatestLogEntries(LogType.Error, 1);
+            var logEntries = _readService.GetLatestLogEntries(LogType.Error, 10);
 
             // ASSERT
             Assert.IsTrue(logEntries.All(le => le.LogType == LOG_TYPE_ERROR));
