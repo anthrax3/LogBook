@@ -8,9 +8,10 @@
 - Review the *Lookbook.Demo* project for a working example of the project.
 
 1. To use LogBook download the source code and add a reference to the *LogBook.Services* and *LogBook.Entities* DLL's within the source code.
-2. Initialise a LogHandler: *var logHandler = new LogHandler();*
-3. Write a Log Entry: *logHandler.WriteLog(LogType.Information, "Welcome to LogBook", string.Empty);*
-4. Read Log Entries from the Database: *var logEntries = logHandler.ReadLatestLogEntries(100);*
+2. Add a Database Connection String to your Configuration File called *LogBookEntityModel* 
+3. Initialise a LogHandler: *var logHandler = new LogHandler();*
+4. Write a Log Entry: *logHandler.WriteLog(LogType.Information, "Welcome to LogBook", string.Empty);*
+5. Read Log Entries from the Database: *var logEntries = logHandler.ReadLatestLogEntries(100);*
 
 ## LogBook Pre-Requisites
 - Entity Framework 6
