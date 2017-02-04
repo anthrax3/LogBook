@@ -77,11 +77,7 @@ namespace LogBook.Services.Tests
             var logEntries = _readService.GetLatestLogEntries(LogType.Error, 1);
 
             // ASSERT
-            foreach (var logEntry in logEntries)
-            {
-                Assert.IsTrue(logEntry.LogType == LOG_TYPE_ERROR);
-            }
-
+            Assert.IsTrue(logEntries.All(le => le.LogType == LOG_TYPE_ERROR));
         }
     }
 }

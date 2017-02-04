@@ -29,7 +29,9 @@ namespace LogBook.Services.Internal
 
         internal IEnumerable<LogEntry> GetLatestLogEntries(LogType logType, int maximumEntryCount = 100)
         {
-            var logEntries = _context.LogEntries.Where(le => le.LogType == Convert.ToInt32(logType)).OrderByDescending(le => le.LogTime).Take(maximumEntryCount);
+            var logTypeId = Convert.ToInt32(logType);
+
+            var logEntries = _context.LogEntries.Where(le => le.LogType == logTypeId).OrderByDescending(le => le.LogTime).Take(maximumEntryCount);
 
             return logEntries;
         }
