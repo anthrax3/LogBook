@@ -29,7 +29,7 @@ namespace LogBook.Demo
 
             var logEntries = logHandler.ReadLatestLogEntries(100);
 
-            foreach(var entry in logEntries)
+            foreach (var entry in logEntries)
             {
                 Console.WriteLine($"Log Entry: {entry.LogEntryId}. Message: {entry.Message}. Time: {entry.LogTime}. Host: {entry.HostName}.");
             }

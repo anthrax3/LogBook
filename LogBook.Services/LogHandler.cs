@@ -4,10 +4,12 @@ using LogBook.Services.Internal;
 using LogBook.Services.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Migrations;
 
 namespace LogBook.Services
 {
+    /// <summary>
+    /// Use the LogHandler to Write or Read Log Entries
+    /// </summary>
     public class LogHandler
     {
         #region Dependencies
@@ -20,7 +22,7 @@ namespace LogBook.Services
             UpdateDatabase.Execute();
 
             var logBookEntityModel = new LogBookEntityModel(connectionString);
-            
+
             _writeService = new WriteService(logBookEntityModel);
             _readService = new ReadService(logBookEntityModel);
         }

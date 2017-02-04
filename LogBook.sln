@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogBook.Demo", "LogBook.Dem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogBook.Entities", "LogBook.Entities\LogBook.Entities.csproj", "{B49FB201-239D-48E4-9FC7-934C95E02EC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogBook.Services.Tests", "LogBook.Services.Tests\LogBook.Services.Tests.csproj", "{01EB1A9E-1C9D-4A4D-8244-AFC2F9807C32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogBook.Services.Tests", "LogBook.Services.Tests\LogBook.Services.Tests.csproj", "{8C7FE259-DE57-4A0D-99A9-295165EDFC29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{B49FB201-239D-48E4-9FC7-934C95E02EC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B49FB201-239D-48E4-9FC7-934C95E02EC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B49FB201-239D-48E4-9FC7-934C95E02EC6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01EB1A9E-1C9D-4A4D-8244-AFC2F9807C32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01EB1A9E-1C9D-4A4D-8244-AFC2F9807C32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01EB1A9E-1C9D-4A4D-8244-AFC2F9807C32}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01EB1A9E-1C9D-4A4D-8244-AFC2F9807C32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C7FE259-DE57-4A0D-99A9-295165EDFC29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C7FE259-DE57-4A0D-99A9-295165EDFC29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C7FE259-DE57-4A0D-99A9-295165EDFC29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C7FE259-DE57-4A0D-99A9-295165EDFC29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
