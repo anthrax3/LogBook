@@ -6,8 +6,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogBook.Services.Tests
 {
@@ -120,11 +118,11 @@ namespace LogBook.Services.Tests
         {
             // ARRANGE
             var logEntries = new List<LogEntry>();
-            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 1", LogTime = new DateTime(2015, 2, 1), LogType = Convert.ToInt32(LogType.Error)});
-            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 2", LogTime = new DateTime(2016, 2, 1), LogType = Convert.ToInt32(LogType.Error)});
-            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 3", LogTime = new DateTime(2017, 2, 1), LogType = Convert.ToInt32(LogType.Error)});
-            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 4", LogTime = new DateTime(2017, 2, 1), LogType = Convert.ToInt32(LogType.Error)});
-            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 5", LogTime = new DateTime(2017, 2, 1), LogType = Convert.ToInt32(LogType.Error)});
+            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 1", LogTime = new DateTime(2015, 2, 1), LogType = Convert.ToInt32(LogType.Error) });
+            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 2", LogTime = new DateTime(2016, 2, 1), LogType = Convert.ToInt32(LogType.Error) });
+            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 3", LogTime = new DateTime(2017, 2, 1), LogType = Convert.ToInt32(LogType.Error) });
+            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 4", LogTime = new DateTime(2017, 2, 1), LogType = Convert.ToInt32(LogType.Error) });
+            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 5", LogTime = new DateTime(2017, 2, 1), LogType = Convert.ToInt32(LogType.Error) });
 
             _mockContext.LogEntries.AddRange(logEntries);
             _mockContext.SaveChanges();
