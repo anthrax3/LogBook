@@ -11,3 +11,8 @@
 2. Initialise a LogHandler: *var logHandler = new LogHandler();*
 3. Write a Log Entry: *logHandler.WriteLog(LogType.Information, "Welcome to LogBook", string.Empty);*
 4. Read Log Entries from the Database: *var logEntries = logHandler.ReadLatestLogEntries(100);*
+
+## LogBook Pre-Requisites
+- Entity Framework 6
+- SQL Server
+- .NET 4.5.2
