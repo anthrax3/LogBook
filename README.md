@@ -6,6 +6,7 @@
 # How do you use LogBook?
 - We are planning to add LogBook to the Nuget Package Manager in the near future.
 - Review the *Lookbook.Demo* project for a working example of the project.
+
 1. To use LogBook download the source code and add a reference to the *LogBook.Services* and *LogBook.Entities* DLL's within the source code.
 2. Initialise a LogHandler: *var logHandler = new LogHandler();*
 3. Write a Log Entry: *logHandler.WriteLog(LogType.Information, "Welcome to LogBook", string.Empty);*
