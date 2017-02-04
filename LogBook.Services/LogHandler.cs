@@ -89,5 +89,18 @@ namespace LogBook.Services
 
             return results;
         }
+
+        /// <summary>
+        /// Get a paged list of the most recent Log Entries
+        /// </summary>
+        /// <param name="pageSize">How many Log Entries per page?</param>
+        /// <param name="pageNumber">What page of Log Entries to return.</param>
+        /// <returns></returns>
+        public IEnumerable<LogEntry> ReadLatestLogEntriesByPage(int pageSize = 100, int pageNumber = 1)
+        {
+            var results = _readService.GetLatestLogEntriesPage(pageSize, pageNumber);
+
+            return results;
+        }
     }
 }
