@@ -42,5 +42,20 @@ namespace LogBook.Services.Internal
 
             return logEntries;
         }
+
+        internal int ErrorsSinceTime(DateTime startTime)
+        {
+            var errorLogTypeId = Convert.ToInt32(LogType.Error);
+
+            var errorCount = _context.LogEntries.Count(x =>
+                x.LogType == errorLogTypeId &&
+                x.LogTime.Year >= startTime.Year &&
+                x.LogTime.Month >= startTime.Month &&
+                x.LogTime.Day >= startTime.Day &&
+                x.LogTime.Hour >= startTime.Hour &&
+                x.LogTime.Minute >= startTime.Minute);
+
+            return errorCount;
+        }
     }
 }

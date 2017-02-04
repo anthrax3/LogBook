@@ -102,5 +102,17 @@ namespace LogBook.Services
 
             return results;
         }
+
+        /// <summary>
+        /// Read the number of Errors logged since a specified time
+        /// </summary>
+        /// <param name="startTime">When the first error log should have occured.</param>
+        /// <returns></returns>
+        public int ErrorsSinceTime(DateTime startTime)
+        {
+            var results = _readService.ErrorsSinceTime(startTime);
+
+            return results;
+        }
     }
 }

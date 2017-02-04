@@ -1,4 +1,5 @@
 ﻿using LogBook.Entities;
+using LogBook.Entities.Entities;
 using LogBook.Services.Internal;
 using LogBook.Services.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -112,6 +113,46 @@ namespace LogBook.Services.Tests
 
             // ASSERT
             Assert.IsTrue(logEntries.First().Message == "Test Log Entry 3");
+        }
+
+        [TestMethod]
+        public void ErrorsSinceTime_FiltersDate()
+        {
+            // ARRANGE
+            var logEntries = new List<LogEntry>();
+            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 1", LogTime = new DateTime(2015, 2, 1), LogType = Convert.ToInt32(LogType.Error)});
+            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 2", LogTime = new DateTime(2016, 2, 1), LogType = Convert.ToInt32(LogType.Error)});
+            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 3", LogTime = new DateTime(2017, 2, 1), LogType = Convert.ToInt32(LogType.Error)});
+            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 4", LogTime = new DateTime(2017, 2, 1), LogType = Convert.ToInt32(LogType.Error)});
+            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 5", LogTime = new DateTime(2017, 2, 1), LogType = Convert.ToInt32(LogType.Error)});
+
+            _mockContext.LogEntries.AddRange(logEntries);
+            _mockContext.SaveChanges();
+
+            // ACT
+            var actualErrorCount = _readService.ErrorsSinceTime(new DateTime(2017, 2, 1));
+
+            // ASSERT
+            Assert.AreEqual(3, actualErrorCount);
+        }
+
+        [TestMethod]
+        public void ErrorsSinceTime_FiltersLogType()
+        {
+            // ARRANGE
+            var logEntries = new List<LogEntry>();
+            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 1", LogTime = new DateTime(2017, 2, 1), LogType = Convert.ToInt32(LogType.Error) });
+            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 2", LogTime = new DateTime(2017, 2, 1), LogType = Convert.ToInt32(LogType.Information) });
+            logEntries.Add(new LogEntry { HostName = "Test", Message = "Test Log Entry 3", LogTime = new DateTime(2017, 2, 1), LogType = Convert.ToInt32(LogType.Warning) });
+
+            _mockContext.LogEntries.AddRange(logEntries);
+            _mockContext.SaveChanges();
+
+            // ACT
+            var actualErrorCount = _readService.ErrorsSinceTime(new DateTime(2017, 2, 1));
+
+            // ASSERT
+            Assert.AreEqual(1, actualErrorCount);
         }
     }
 }
