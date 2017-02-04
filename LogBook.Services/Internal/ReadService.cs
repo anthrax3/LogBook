@@ -35,5 +35,12 @@ namespace LogBook.Services.Internal
 
             return logEntries;
         }
+
+        internal IEnumerable<LogEntry> GetLatestLogEntriesPage(int pageSize = 100, int pageNumber = 1)
+        {
+            var logEntries = _context.LogEntries.OrderByDescending(le => le.LogTime).Skip((pageNumber - 1) * pageSize).Take(pageSize);
+
+            return logEntries;
+        }
     }
 }

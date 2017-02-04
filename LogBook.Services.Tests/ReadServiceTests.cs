@@ -79,5 +79,39 @@ namespace LogBook.Services.Tests
             // ASSERT
             Assert.IsTrue(logEntries.All(le => le.LogType == LOG_TYPE_ERROR));
         }
+
+        [TestMethod]
+        public void GetLatestLogEntriesPage_ReturnsCorrectFirstPage()
+        {
+            // ARRANGE
+            _writeService.WriteLog(LogType.Information, nameof(GetLatestLogEntriesPage_ReturnsCorrectFirstPage), null, "Test Log Entry 1", string.Empty);
+            _writeService.WriteLog(LogType.Information, nameof(GetLatestLogEntriesPage_ReturnsCorrectFirstPage), null, "Test Log Entry 2", string.Empty);
+            _writeService.WriteLog(LogType.Information, nameof(GetLatestLogEntriesPage_ReturnsCorrectFirstPage), null, "Test Log Entry 3", string.Empty);
+            _writeService.WriteLog(LogType.Information, nameof(GetLatestLogEntriesPage_ReturnsCorrectFirstPage), null, "Test Log Entry 4", string.Empty);
+            _writeService.WriteLog(LogType.Information, nameof(GetLatestLogEntriesPage_ReturnsCorrectFirstPage), null, "Test Log Entry 5", string.Empty);
+
+            // ACT
+            var logEntries = _readService.GetLatestLogEntriesPage(1, 1);
+
+            // ASSERT
+            Assert.IsTrue(logEntries.First().Message == "Test Log Entry 5");
+        }
+
+        [TestMethod]
+        public void GetLatestLogEntriesPage_ReturnsCorrectThirdPage()
+        {
+            // ARRANGE
+            _writeService.WriteLog(LogType.Information, nameof(GetLatestLogEntriesPage_ReturnsCorrectThirdPage), null, "Test Log Entry 1", string.Empty);
+            _writeService.WriteLog(LogType.Information, nameof(GetLatestLogEntriesPage_ReturnsCorrectThirdPage), null, "Test Log Entry 2", string.Empty);
+            _writeService.WriteLog(LogType.Information, nameof(GetLatestLogEntriesPage_ReturnsCorrectThirdPage), null, "Test Log Entry 3", string.Empty);
+            _writeService.WriteLog(LogType.Information, nameof(GetLatestLogEntriesPage_ReturnsCorrectThirdPage), null, "Test Log Entry 4", string.Empty);
+            _writeService.WriteLog(LogType.Information, nameof(GetLatestLogEntriesPage_ReturnsCorrectThirdPage), null, "Test Log Entry 5", string.Empty);
+
+            // ACT
+            var logEntries = _readService.GetLatestLogEntriesPage(1, 3);
+
+            // ASSERT
+            Assert.IsTrue(logEntries.First().Message == "Test Log Entry 3");
+        }
     }
 }
