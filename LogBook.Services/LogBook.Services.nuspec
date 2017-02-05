@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>tommcclean.LogBook</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Tom McClean</authors>
+    <owners>Tom McClean</owners>
+    <licenseUrl>https://github.com/tommcclean/LogBook/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/tommcclean/LogBook</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>LogBook is a really small and simple Logging utility for .NET Projects.</description>
+    <copyright>Copyright 2017</copyright>
+    <tags>Logger logging errors warnings</tags>
+  </metadata>
+</package>
