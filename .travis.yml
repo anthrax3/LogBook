@@ -4,3 +4,5 @@ script:
   - xbuild /p:Configuration=Debug LogBook.sln
 before_install:
   - sudo apt-get install nunit-console
+after_script:
+  - nunit-console LogBook.Services.Tests/bin/Release/LogBook.Services.Tests.dll
