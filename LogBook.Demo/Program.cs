@@ -34,7 +34,15 @@ namespace LogBook.Demo
                 Console.WriteLine($"Log Entry: {entry.LogEntryId}. Message: {entry.Message}. Time: {entry.LogTime}. Host: {entry.HostName}.");
             }
 
-            Console.WriteLine("Demo Log Entries have been retrieved. Press any key to terminate the Demo.");
+            Console.WriteLine("Demo Log Entries have been retrieved. Press any key to terminate review number of errors today.");
+            Console.ReadKey();
+
+            var today = DateTime.Now;
+            var errorsToday = logHandler.ErrorsSinceTime(new DateTime(today.Year, today.Month, today.Day, 0, 0, 0));
+
+            Console.WriteLine($"Errors Today: {errorsToday}");
+
+            Console.WriteLine("Press any key to terminate the demo.");
             Console.ReadKey();
         }
     }
