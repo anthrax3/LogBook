@@ -27,6 +27,13 @@ namespace LogBook.Services.Internal
             return logEntries;
         }
 
+        internal LogEntry GetLogEntry(int logEntryId)
+        {
+            var logEntry = _context.LogEntries.FirstOrDefault(le => le.LogEntryId == logEntryId);
+
+            return logEntry;
+        }
+
         internal IEnumerable<LogEntry> GetLatestLogEntries(LogType logType, int maximumEntryCount = 100)
         {
             var logTypeId = Convert.ToInt32(logType);
@@ -49,11 +56,7 @@ namespace LogBook.Services.Internal
 
             var errorCount = _context.LogEntries.Count(x =>
                 x.LogType == errorLogTypeId &&
-                x.LogTime.Year >= startTime.Year &&
-                x.LogTime.Month >= startTime.Month &&
-                x.LogTime.Day >= startTime.Day &&
-                x.LogTime.Hour >= startTime.Hour &&
-                x.LogTime.Minute >= startTime.Minute);
+                x.LogTime >= startTime);
 
             return errorCount;
         }

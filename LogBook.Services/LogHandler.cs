@@ -66,6 +66,18 @@ namespace LogBook.Services
         }
 
         /// <summary>
+        /// Get a single Log Entry by Id
+        /// </summary>
+        /// <param name="logEntryId">Log Entry Id</param>
+        /// <returns></returns>
+        public LogEntry GetLogEntry(int logEntryId)
+        {
+            var result = _readService.GetLogEntry(logEntryId);
+
+            return result;
+        }
+
+        /// <summary>
         /// Get a list of the most recent Log Entries
         /// </summary>
         /// <param name="maximumEntryCount">How many Log Entries do you want to return?</param>
